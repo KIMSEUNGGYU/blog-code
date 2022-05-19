@@ -12,14 +12,15 @@ const header = {
   },
 };
 
-app.use('/', express.static(path.join(__dirname, '../client'), header));
+app.use('/', express.static(path.join(__dirname, '../client/user'), header));
+app.use('/counter', express.static(path.join(__dirname, '../client/counter'), header));
 
 app.get('/', function (request, response) {
-  response.sendFile(path.join(__dirname, '../client/user.html'));
+  response.sendFile(path.join(__dirname, '../client/user/user.html'));
 });
 
 app.get('/counter', function (request, response) {
-  response.sendFile(path.join(__dirname, '../client/counter.html'));
+  response.sendFile(path.join(__dirname, '../client/counter/counter.html'));
 });
 
 const http = require('http').createServer(app);
