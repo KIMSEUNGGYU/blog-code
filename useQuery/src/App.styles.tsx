@@ -9,6 +9,7 @@ export const Layout = styled.div`
   margin: 0 auto;
   width: 320px;
   height: 100%;
+  min-height: 100vh;
   border: 1px solid black;
 `;
 

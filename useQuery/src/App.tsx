@@ -1,24 +1,18 @@
-import { useEffect, useState } from 'react';
-
+import { getImages } from '@/apis';
+import { useFetch } from '@/hooks/useFetch.ts';
 import * as S from './App.styles.tsx';
 
 function App() {
-  const [images, setImages] = useState<Image[]>([]);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/photos?_page=1&limit=10') //
-      .then((res) => res.json())
-      .then((data) => {
-        setImages(data);
-      });
-  }, []);
+  const { data: images, isLoading, error } = useFetch<Image[]>(getImages);
+  // console.log('useFetch result', images, isLoading, error)
 
   return (
     <S.Wrapper>
       <S.Layout>
         <S.Title>Images - useQuery</S.Title>
         <S.List>
-          {images.map((image) => (
+          {isLoading && <div>loading..</div>}
+          {images?.map((image) => (
             <S.Item key={image.id}>
               <img src={image.thumbnailUrl} alt={'thumbnail'} />
               <span>{image.title}</span>
@@ -32,7 +26,7 @@ function App() {
 
 export default App;
 
-type Image = {
+export type Image = {
   albumId: number;
   id: number;
   thumbnailUrl: string;
