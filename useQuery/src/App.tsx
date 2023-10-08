@@ -1,32 +1,41 @@
-import viteLogo from '/vite.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import reactLogo from './assets/react.svg';
-import './App.css';
+import * as S from './App.styles.tsx';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [images, setImages] = useState<Image[]>([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/photos?_page=1&limit=10') //
+      .then((res) => res.json())
+      .then((data) => {
+        setImages(data);
+      });
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <S.Wrapper>
+      <S.Layout>
+        <S.Title>Images - useQuery</S.Title>
+        <S.List>
+          {images.map((image) => (
+            <S.Item key={image.id}>
+              <img src={image.thumbnailUrl} alt={'thumbnail'} />
+              <span>{image.title}</span>
+            </S.Item>
+          ))}
+        </S.List>
+      </S.Layout>
+    </S.Wrapper>
   );
 }
 
 export default App;
+
+type Image = {
+  albumId: number;
+  id: number;
+  thumbnailUrl: string;
+  title: string;
+  url: string;
+};
