@@ -1,10 +1,16 @@
 import axios from 'axios';
 
-import { Image } from '@/App.tsx';
-
 const client = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
 });
+
+export type Image = {
+  albumId: number;
+  id: number;
+  thumbnailUrl: string;
+  title: string;
+  url: string;
+};
 
 export const getImages = async (): Promise<Image[]> => {
   await delay(500);

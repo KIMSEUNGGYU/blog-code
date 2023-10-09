@@ -1,4 +1,4 @@
-import { getImages } from './apis';
+import { getImages, Image } from './apis';
 import * as S from './App.styles.tsx';
 import { useFetch } from './hooks/useFetch.ts';
 
@@ -24,11 +24,3 @@ function App() {
 }
 
 export default App;
-
-export type Image = {
-  albumId: number;
-  id: number;
-  thumbnailUrl: string;
-  title: string;
-  url: string;
-};
