@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.main`
-  width: 100vw;
-  //height: 100vh;
+export const Wrapper = styled.div`
+  display: flex;
+  gap: 0.2rem;
+  margin: 0 auto;
+  height: 100vh;
 `;
 
 export const Layout = styled.div`
   margin: 0 auto;
   width: 320px;
-  height: 100%;
-  min-height: 100vh;
   border: 1px solid black;
 `;
 
@@ -18,14 +18,21 @@ export const Title = styled.h1`
 `;
 
 export const List = styled.ul`
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
+  height: calc(100% - 100px);
+  overflow: scroll;
+  overflow-x: hidden;
 `;
 
 export const Item = styled.li`
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.5rem;
 
   img {
     width: 100%;
@@ -35,4 +42,8 @@ export const Item = styled.li`
   span {
     font-weight: bold;
   }
+`;
+
+export const Loading = styled.div`
+  text-align: center;
 `;
