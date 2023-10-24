@@ -1,5 +1,11 @@
+import { ExampleApp1 } from './example1/App.tsx';
+
 function App() {
-  return <h1>APP</h1>;
+  return (
+    <>
+      <ExampleApp1 />
+    </>
+  );
 }
 
 export default App;
