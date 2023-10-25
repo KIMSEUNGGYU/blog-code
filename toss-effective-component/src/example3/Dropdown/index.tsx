@@ -3,21 +3,21 @@ import { PropsWithChildren, useState } from 'react';
 import { DropdownContext } from './context';
 import { Item } from './Item';
 import { Menu } from './Menu';
+import { Modal } from './Modal';
 import { Trigger } from './Trigger';
 
-interface Props {
-  value: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
+interface Props<T> {
+  value: T;
+  onChange: (selecteds: T) => void;
 }
-
-export function Dropdown({ value, onChange, children }: PropsWithChildren<Props>) {
+export function Dropdown<T>({ value, onChange, children }: PropsWithChildren<Props<T>>) {
   const [isOpen, setIsOpen] = useState(false);
-  const [select, setSelect] = useState(value);
+  const [select, setSelect] = useState<T>(value);
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
-  const handleSelect = (item: string) => {
+  const handleSelect = (item: T) => {
     setSelect(item);
     onChange(item);
     handleClose();
@@ -41,3 +41,4 @@ export function Dropdown({ value, onChange, children }: PropsWithChildren<Props>
 Dropdown.Trigger = Trigger;
 Dropdown.Menu = Menu;
 Dropdown.Item = Item;
+Dropdown.Modal = Modal;
