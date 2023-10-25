@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { FrameworkMultiSelect } from './FrameworkSelect.tsx';
+import { MultiSelect } from './MultiSelect';
 
 export function ExampleApp4() {
   const frameworks = [
@@ -19,12 +19,8 @@ export function ExampleApp4() {
 
   return (
     <div>
-      <h1>ExampleApp3</h1>
-      <FrameworkMultiSelect
-        frameworks={frameworks}
-        selectedFrameworks={selectedFrameworks}
-        onFrameworkChange={change}
-      />
+      <h1>ExampleApp4</h1>
+      <MultiSelect value={selectedFrameworks} onChange={change} options={frameworks} />
     </div>
   );
 }
