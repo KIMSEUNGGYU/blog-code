@@ -3,8 +3,6 @@ import { PropsWithChildren, useState } from 'react';
 import { DropdownContext } from './context';
 import { Item } from './Item';
 import { Menu } from './Menu';
-import { Modal } from './Modal';
-import { Trigger } from './Trigger';
 
 interface Props<T> {
   value: T;
@@ -30,7 +28,5 @@ export function Dropdown<T>({ value, onChange, children }: PropsWithChildren<Pro
   );
 }
 
-Dropdown.Trigger = Trigger;
 Dropdown.Menu = Menu;
 Dropdown.Item = Item;
-Dropdown.Modal = Modal;
