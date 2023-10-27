@@ -1,26 +1,21 @@
 import { useState } from 'react';
 
-import { MultiSelect } from './MultiSelect';
+import { RegisterForm } from '@/example5/RegisterForm.tsx';
+import { RegisterLayout } from './RegisterLayout.tsx';
+import { Select } from './Select.tsx';
 
 export function ExampleApp5() {
-  const frameworks = [
-    { label: 'Next.js' },
-    { label: 'Remix' },
-    { label: 'Gatsby' },
-    { label: 'Relay' },
-    { label: 'Vue' },
-    { label: 'Nuxt' },
-    { label: 'Solidjs' },
-    { label: 'Angular' },
-    { label: 'Qwick' },
-    { label: 'jQuery' },
-  ];
-  const [selectedFrameworks, change] = useState<string[]>([]);
+  const banks = ['토스뱅크', '카카오뱅크', '신한은행', '국민은행', '하나은행', '기업은행', '우리은행'];
+  const [value, change] = useState<string>('토스뱅크');
 
   return (
     <div>
       <h1>ExampleApp5</h1>
-      <MultiSelect value={selectedFrameworks} onChange={change} options={frameworks} />
+      <RegisterLayout title="내 계좌 등록하기">
+        <Select value={value} onChange={change} options={banks}>
+          <RegisterForm />
+        </Select>
+      </RegisterLayout>
     </div>
   );
 }

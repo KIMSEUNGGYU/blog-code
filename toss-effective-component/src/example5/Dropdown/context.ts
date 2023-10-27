@@ -1,10 +1,7 @@
 import { createContext, useContext } from 'react';
 
 interface DropdownContextValue<T> {
-  isOpen: boolean;
   select?: T;
-  onOpen: () => void;
-  onClose: () => void;
   onSelect: (item: T) => void;
 }
 

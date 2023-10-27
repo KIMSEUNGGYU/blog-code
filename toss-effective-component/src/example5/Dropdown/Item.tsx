@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 
 import { useDropdownContext } from './context';
-import { Checkbox } from '../Checkbox';
 
 export function Item({ value }: { value: string }) {
-  const { select } = useDropdownContext();
+  const { select, onSelect } = useDropdownContext();
 
   return (
     <ItemWrapper>
-      <Checkbox label={value} checked={select?.includes(value)} />
+      <span className={select === value ? 'active' : ''} onClick={() => onSelect(value)}>
+        {value}
+      </span>
     </ItemWrapper>
   );
 }
@@ -19,4 +20,10 @@ const ItemWrapper = styled.li`
   height: 30px;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  cursor: pointer;
+
+  & span.active {
+    color: blue;
+    font-weight: bold;
+  }
 `;

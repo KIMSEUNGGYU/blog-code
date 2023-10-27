@@ -11,25 +11,17 @@ interface Props<T> {
   onChange: (selecteds: T) => void;
 }
 export function Dropdown<T>({ value, onChange, children }: PropsWithChildren<Props<T>>) {
-  const [isOpen, setIsOpen] = useState(false);
   const [select, setSelect] = useState<T>(value);
-
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
 
   const handleSelect = (item: T) => {
     setSelect(item);
     onChange(item);
-    handleClose();
   };
 
   return (
     <DropdownContext.Provider
       value={{
-        isOpen,
         select,
-        onOpen: handleOpen,
-        onClose: handleClose,
         onSelect: handleSelect,
       }}
     >
