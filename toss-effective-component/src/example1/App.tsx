@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { Dropdown } from '@/example1/Dropdown';
-// import {Select} from "@/example1/Select.tsx";
 
 export function ExampleApp1() {
   const [selected, change] = useState('선택');
