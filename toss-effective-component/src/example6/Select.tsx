@@ -1,21 +1,21 @@
-import { PropsWithChildren } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { Dropdown } from './Dropdown';
 
 type Props = {
-  value: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
   options: string[];
+  children: ({ selected }: { selected: string }) => ReactNode;
 };
-export function Select({ value, onChange, options, children }: PropsWithChildren<Props>) {
+export function Select({ options, children }: Props) {
+  const [value, change] = useState<string>(options[0]);
   return (
-    <Dropdown value={value} onChange={onChange}>
+    <Dropdown value={value} onChange={change}>
       <Dropdown.Menu>
         {options.map((option, index) => (
           <Dropdown.Item key={index} value={option} />
         ))}
       </Dropdown.Menu>
-      {children}
+      {children({ selected: value })}
     </Dropdown>
   );
 }

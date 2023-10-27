@@ -1,14 +1,11 @@
 import { useId } from 'react';
 import styled from '@emotion/styled';
 
-import { useDropdownContext } from './Dropdown/context.ts';
-
-export function RegisterForm() {
-  const { select } = useDropdownContext();
+export function RegisterForm({ bank }: { bank: string }) {
   const id = useId();
   return (
     <RegisterFormWrapper>
-      <Title>{select} 등록</Title>
+      <Title>{bank} 등록</Title>
       <Form>
         <Label htmlFor={id}>계좌번호</Label>
         <Input id={id} />
