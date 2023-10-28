@@ -1,4 +1,7 @@
 # blog-code
+> 블로그 예제 레포를 만들때 `template` 브랜치에서 나오기   
+> 설정도 `template` 브랜치에서 관리하기
+
 https://kimseunggyu.vercel.app/ 에서 제공하는 예제 code
 
 ## 컨텐츠
