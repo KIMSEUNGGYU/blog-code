@@ -22,7 +22,7 @@ export const List = styled.ul`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  height: calc(100% - 100px);
+  height: calc(100% - 200px);
   overflow: scroll;
   overflow-x: hidden;
 `;

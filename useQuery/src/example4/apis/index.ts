@@ -12,9 +12,9 @@ export type Image = {
   url: string;
 };
 
-export const getImages = async (): Promise<Image[]> => {
+export const getImages = async (page = 1): Promise<Image[]> => {
   await delay(500);
-  const response = await client.get('/photos?_page=1&limit=10');
+  const response = await client.get(`/photos?_page=${page}&limit=10`);
   return response.data;
 };
 
