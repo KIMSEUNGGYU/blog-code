@@ -1,9 +1,9 @@
 import { Suspense, useState } from 'react';
 
-import { SelectedItem } from '@/example3/SelectedItem.tsx';
 import { getImages } from './apis';
 import * as S from './App.styles.tsx';
 import { useQuery } from './hooks/useQuery.ts';
+import { SelectedItem } from './SelectedItem';
 
 function App() {
   const [selectedItem, setSelectedItem] = useState<Image | undefined>(undefined);

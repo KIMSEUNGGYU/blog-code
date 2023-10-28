@@ -21,7 +21,6 @@ export function promiseWrapper<T>(promise: Promise<T>) {
       case 'pending':
         throw s;
       case 'success':
-        console.log('promiseWrapper', result);
         return result;
       case 'error':
         throw result;
