@@ -17,7 +17,7 @@ function App() {
     queryKey: ['images'],
     perPage: 10,
     // GYU-TEST: error 테스트
-    useErrorBoundary: true,
+    // useErrorBoundary: true,
   });
 
   const handleSelected = (item: Image) => {
@@ -49,6 +49,8 @@ function App() {
           ))}
           {isLoading && <div>loading...</div>}
           {!isLoading && <div ref={inViewRef} />}
+          {/* useInView 가 어렵다면 버튼을 클릭해서 사용 */}
+          {/*{!isLoading && <button onClick={onNextFetch}>더보기</button>}*/}
         </S.List>
       </S.Layout>
     </S.Wrapper>

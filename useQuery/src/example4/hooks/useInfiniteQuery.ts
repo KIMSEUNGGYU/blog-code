@@ -29,10 +29,10 @@ export function useInfiniteQuery<T>(
       const data = await fetcher.apply(null, [page.current, perPage]);
 
       // GYU-TEST: error 테스트 - api 에러로 가정
-      if (page.current === 3) {
-        console.log('in');
-        throw new Error('API 요청 에러');
-      }
+      // if (page.current === 3) {
+      //   console.log('in');
+      //   throw new Error('API 요청 에러');
+      // }
       cache.set(쿼리키, {
         // T 로 [] 로 지정할 수 있는데 이를 T 로 인식하게 했는데 타입에서 [] 로 해야 [...data] 할 수 있어 우선 ts-ignore 추가
         // @ts-ignore
