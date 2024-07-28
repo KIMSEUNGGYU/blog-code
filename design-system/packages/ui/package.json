@@ -11,8 +11,10 @@
     }
   },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsup && pnpm build:style",
+    "build:style": "tailwindcss -i ./src/styles/globals.css -o ./dist/index.css",
+    "dev": "pnpm dev:style && tsup --watch",
+    "dev:style": "tailwindcss -i ./src/styles/globals.css -o ./dist/index.css --watch",
     "lint": "eslint . --max-warnings 0",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
