@@ -1,0 +1,27 @@
+@tailwind components;
+
+@layer components {
+  /* CloseIcon */
+  /* 데이터가 있으면 나오는데 또 포커스여야함  => 즉, 포커스이고 데이터가 있어야함 */
+  /* Input 컴포넌트의 input 클래스와 icon-close, icon-search 가 클래스가 지정되어 있어야 정상 동작 */
+  .input:focus:not(:placeholder-shown) + div .icon-close {
+    @apply pointer-events-auto opacity-100 fill-gray500;
+  }
+
+  /* focus 상태에서 icon 을 클릭하면 우선 안보이는 형태로 유지해야 클릭할 수 있음.
+     스타일의 focus 상태가 벗어나면 바로 해제되기 때문에 스타일 우선 아예 안보이고, 이벤트 호출하지 않는 상태로 임시로 처리
+     리액트에서 isFocus 값으로 해당 icon-close 가보일지 말지 결정하기 때문에 스타일 우선 아예 안보이고, 이벤트 호출하지 않는 상태로 임시로 처리
+  */
+  .input:placeholder-shown + div .icon-close {
+    @apply pointer-events-none opacity-0;
+  }
+
+
+  /* SearchIcon */
+  .input:not(:placeholder-shown) + div .icon-search {
+    @apply fill-gray700;
+  } 
+  .input:not(:placeholder-shown) + div .icon-search[aria-disabled=true] {
+    @apply fill-gray300;
+  }
+}

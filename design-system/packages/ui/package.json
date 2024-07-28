@@ -4,6 +4,7 @@
   "sideEffects": false,
   "license": "MIT",
   "exports": {
+    "./components": "./src/components/index.ts",
     "./button": {
       "types": "./src/button.tsx",
       "import": "./dist/button.mjs",
