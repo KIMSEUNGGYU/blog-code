@@ -44,3 +44,11 @@ export const Primary: Story = {
     },
   },
 };
+
+export const Test: Story = {
+  render: (props) => (
+    <div className="border border-primary500">
+      <Button {...props}>Hello</Button>
+    </div>
+  ),
+};

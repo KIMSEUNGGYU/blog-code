@@ -1,9 +1,22 @@
+import { colorMap, typographyMap } from '@acme/ui/styles'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./stories/**/*.{ts,tsx,mdx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        ...colorMap
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    ({ addUtilities }) => {
+      const newUtilities = {
+        ...typographyMap,
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 }
 

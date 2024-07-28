@@ -8,7 +8,9 @@
       "types": "./src/button.tsx",
       "import": "./dist/button.mjs",
       "require": "./dist/button.js"
-    }
+    },
+    "./index.css": "./dist/index.css",
+    "./styles": "./src/styles/index.ts"
   },
   "scripts": {
     "build": "tsup && pnpm build:style",
