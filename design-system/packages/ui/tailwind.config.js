@@ -1,3 +1,6 @@
+import { colorMap } from './src/styles/colors'
+import { typographyMap } from './src/styles/typography'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -51,6 +54,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        ...colorMap,
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -73,5 +77,13 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require('tailwindcss-animate'),
+    ({ addUtilities }) => {
+      const newUtilities = {
+        ...typographyMap,
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 }
